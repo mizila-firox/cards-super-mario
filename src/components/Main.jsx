@@ -4,10 +4,11 @@ import Card from "./Card";
 
 export const Container = styled.div`
   grid-area: main;
-  background-color: yellow;
+  background-color: #31373f;
 
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-content: flex-start;
   /* align-content: initial; */
 

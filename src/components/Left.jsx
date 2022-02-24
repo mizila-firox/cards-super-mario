@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   grid-area: left;
-  background-color: blue;
+  background-color: #151a22;
+
+  position: sticky;
 `;
 
 const Left = () => {
