@@ -5,6 +5,7 @@ import Card from "./Card";
 export const Container = styled.div`
   grid-area: main;
   background-color: #31373f;
+  height: fit-content;
 
   display: flex;
   flex-wrap: wrap;

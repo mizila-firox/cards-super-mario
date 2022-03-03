@@ -5,7 +5,7 @@ export const Container = styled.div`
   grid-area: header;
   background-color: #151a22;
 
-  border-bottom: 2px solid #0f1318;
+  /* border-bottom: 2px solid #0f1318; */
   /* margin-left: 25px; */
   /* background-color: white; */
 
