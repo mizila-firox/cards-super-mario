@@ -1,12 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "../../styles/Home.module.css";
 import { AuthContext } from "../context/contexto";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Left from "../components/Left";
 import Main from "../components/Main";
+
+import { connectEthereum } from "../ethereum";
 
 // export const Container = styled.div`
 //   display: grid;
@@ -29,6 +31,14 @@ export const Container = styled.div`
 
 export default function Home() {
   const { data } = useContext(AuthContext);
+
+  useEffect(() => {
+    const done = async () => {
+      const { account } = await connectEthereum();
+      console.log(account);
+    };
+    done();
+  }, []);
 
   return (
     <Container>

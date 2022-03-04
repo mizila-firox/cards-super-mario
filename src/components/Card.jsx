@@ -9,7 +9,7 @@ export const CardHolder = styled.div`
   /* overflow: hidden; */
   width: 180px;
   height: 280px;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.236);
   padding: 0;
   /* max-height: min-content; */
   border-radius: 10px;
