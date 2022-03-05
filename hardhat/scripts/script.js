@@ -1,29 +1,60 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
-const { ethers } = require("hardhat");
+require("dotenv").config();
+const { ethers, Wallet } = require("ethers");
+const hh = require("hardhat");
+const RandomContract = require("../artifacts/contracts/RandomNumberConsumer.sol/RandomNumberConsumer.json");
 
 async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+  // const RandomNumberConsumer = await hh.ethers.getContractFactory(
+  //   "RandomNumberConsumer"
+  // );
 
-  // We get the contract to deploy
-  const Signer = await ethers.getContractFactory("Signer");
-  const signer = await Signer.deploy();
+  // const randomNumberConsumer = await RandomNumberConsumer.deploy();
+  // await randomNumberConsumer.deployed();
+  // console.log("random number deployed to:", randomNumberConsumer.address);
 
-  await signer.deployed();
+  // const value = Number(await randomNumberConsumer.getRandomNumber());
 
-  console.log("Signer deployed to:", signer.address);
+  const provider = new ethers.providers.InfuraProvider(process.env.network);
+  const wallet = new Wallet(process.env.account);
+  const signer = wallet.connect(provider);
+
+  const randomContract = new ethers.Contract(
+    "0xe73AA15C1117733eA0Dd7867E2a9aa0bcDE53b35",
+    RandomContract.abi,
+    signer
+  );
+
+  const gasPrice = await provider.getGasPrice();
+  const gas = ethers.utils.formatUnits(gasPrice, "wei");
+
+  console.log(gas);
+  //FULFILL WITH LINK BEFORE
+  // const tx = await randomContract.getRandomNumber({ gasPrice: "31217536349" });
+  // console.log(tx);
+  // console.log(Number(await randomContract.getRandomResult()));
+
+  // console.log(value);
+
+  // ...often this gas price is easier to understand or
+  // display to the user in gwei
+  // '180.336311245'
+
+  // console.log(gas);
+
+  // const Card = await ethers.getContractFactory("Card");
+  // const card = await Card.deploy();
+
+  // await card.deployed();
+
+  // console.log("Card deployed to:", card.address);
+
+  // const minted = await superMarioWorld.mint(
+  //   "https://ipfs.io/ipfs/Qmch3m7DEFYRaZiFG6gc8qgkBMS3nrTvM5h5v9xZK6rGEz"
+  // );
+
+  // console.log(minted);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main()
   .then(() => process.exit(0))
   .catch((error) => {
