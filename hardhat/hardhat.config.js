@@ -23,7 +23,7 @@ module.exports = {
     mumbai: {
       url: process.env.mumbai,
       accounts: [process.env.account],
-      gasPrice: 70000000000,
+      gasPrice: 80000000000,
     },
   },
   paths: {
