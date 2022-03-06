@@ -12,24 +12,21 @@ async function main() {
   // await randomNumberConsumer.deployed();
   // console.log("random number deployed to:", randomNumberConsumer.address);
 
-  // const value = Number(await randomNumberConsumer.getRandomNumber());
-
   const provider = new ethers.providers.getDefaultProvider(process.env.mumbai);
   const signer = new ethers.Wallet(process.env.account, provider);
-  console.log(provider);
+
+  // const value = Number(await randomNumberConsumer.getRandomNumber());
 
   // const wallet = new Wallet(process.env.account);
   // const signer = wallet.connect(provider);
 
-  console.log(provider);
+  const randomContract = new ethers.Contract(
+    "0xe73AA15C1117733eA0Dd7867E2a9aa0bcDE53b35",
+    RandomContract.abi,
+    signer
+  );
 
-  // const randomContract = new ethers.Contract(
-  //   "0xe73AA15C1117733eA0Dd7867E2a9aa0bcDE53b35",
-  //   RandomContract.abi,
-  //   signer
-  // );
-
-  // console.log(await randomContract.randomResult());
+  console.log(Number(await randomContract.randomResult()));
 
   // const gasPrice = await provider.getGasPrice();
   // const gas = ethers.utils.formatUnits(gasPrice, "wei");
