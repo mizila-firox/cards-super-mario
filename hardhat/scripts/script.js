@@ -14,20 +14,27 @@ async function main() {
 
   // const value = Number(await randomNumberConsumer.getRandomNumber());
 
-  const provider = new ethers.providers.InfuraProvider(process.env.network);
-  const wallet = new Wallet(process.env.account);
-  const signer = wallet.connect(provider);
+  const provider = new ethers.providers.getDefaultProvider(process.env.mumbai);
+  const signer = new ethers.Wallet(process.env.account, provider);
+  console.log(provider);
 
-  const randomContract = new ethers.Contract(
-    "0xe73AA15C1117733eA0Dd7867E2a9aa0bcDE53b35",
-    RandomContract.abi,
-    signer
-  );
+  // const wallet = new Wallet(process.env.account);
+  // const signer = wallet.connect(provider);
 
-  const gasPrice = await provider.getGasPrice();
-  const gas = ethers.utils.formatUnits(gasPrice, "wei");
+  console.log(provider);
 
-  console.log(gas);
+  // const randomContract = new ethers.Contract(
+  //   "0xe73AA15C1117733eA0Dd7867E2a9aa0bcDE53b35",
+  //   RandomContract.abi,
+  //   signer
+  // );
+
+  // console.log(await randomContract.randomResult());
+
+  // const gasPrice = await provider.getGasPrice();
+  // const gas = ethers.utils.formatUnits(gasPrice, "wei");
+
+  // console.log(gas);
   //FULFILL WITH LINK BEFORE
   // const tx = await randomContract.getRandomNumber({ gasPrice: "31217536349" });
   // console.log(tx);
