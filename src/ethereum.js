@@ -1,20 +1,19 @@
 import { ethers } from "ethers";
-// import PriceConsumerV3 from "./artifacts/contracts/PriceConsumerV3.sol/PriceConsumerV3.json";
+import RandomNumberConsumer from "../hardhat/artifacts/contracts/RandomNumberConsumer.sol/RandomNumberConsumer.json";
 
 export const connectEthereum = async () => {
   const [account] = await window.ethereum.request({
     method: "eth_requestAccounts",
   });
-  console.log(account);
+
   if (!account) {
     return {
       provider: undefined,
       balance: undefined,
       account: undefined,
+      randomNumberConsumer: undefined,
     };
   }
-
-  // window.location.reload();
 
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
@@ -25,11 +24,17 @@ export const connectEthereum = async () => {
   // 	signer
   // );
 
+  const randomNumberConsumer = new ethers.Contract(
+    "0xAE3DF72Bc800Ba37c4EB0CC99c8090e69A395bcc",
+    RandomNumberConsumer.abi,
+    signer
+  );
+
   const balance = await provider.getBalance(account);
   // console.log(Number(balance));
 
   // const priceEther = await priceConsumerV3.priceFeed;
   // console.log(Number(await priceConsumerV3.ethUSDprice()));
 
-  return { provider, balance, account };
+  return { provider, balance, account, randomNumberConsumer };
 };
