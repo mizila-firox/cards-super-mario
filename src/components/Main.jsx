@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Card from "./Card";
+import axios from "axios";
 
 export const Container = styled.div`
   grid-area: main;
@@ -19,10 +20,18 @@ export const Container = styled.div`
   padding: 0; */
 `;
 
-const Main = () => {
+const Main = ({ cards }) => {
+  useEffect(() => {
+    const done = async () => {
+      // const {data} = await axios.get(``)
+    };
+    done();
+    //
+  }, []);
+
   return (
     <Container>
-      {new Array(10).fill().map((item, key) => {
+      {cards.map((item, key) => {
         return (
           <Card key={key} card={""} NFT={""}>
             q

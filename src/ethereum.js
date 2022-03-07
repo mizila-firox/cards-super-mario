@@ -1,6 +1,8 @@
 import { ethers } from "ethers";
 import RandomNumberConsumer from "../hardhat/artifacts/contracts/RandomNumberConsumer.sol/RandomNumberConsumer.json";
 
+import Card3 from "../hardhat/artifacts/contracts/Card3.sol/Card3.json";
+
 export const connectEthereum = async () => {
   const [account] = await window.ethereum.request({
     method: "eth_requestAccounts",
@@ -12,6 +14,7 @@ export const connectEthereum = async () => {
       balance: undefined,
       account: undefined,
       randomNumberConsumer: undefined,
+      card3: undefined,
     };
   }
 
@@ -30,11 +33,17 @@ export const connectEthereum = async () => {
     signer
   );
 
+  const card3 = new ethers.Contract(
+    "0xFF8E19BE33A5B8A68bdf20a36005bF9643B5563a",
+    Card3.abi,
+    signer
+  );
+
   const balance = await provider.getBalance(account);
   // console.log(Number(balance));
 
   // const priceEther = await priceConsumerV3.priceFeed;
   // console.log(Number(await priceConsumerV3.ethUSDprice()));
 
-  return { provider, balance, account, randomNumberConsumer };
+  return { provider, balance, account, randomNumberConsumer, card3 };
 };

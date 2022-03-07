@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import { AuthContext } from "../context/contexto";
 import styled from "styled-components";
@@ -9,6 +9,7 @@ import Left from "../components/Left";
 import Main from "../components/Main";
 
 import { connectEthereum } from "../ethereum";
+import { id } from "ethers/lib/utils";
 
 // export const Container = styled.div`
 //   display: grid;
@@ -31,11 +32,27 @@ export const Container = styled.div`
 
 export default function Home() {
   const { data } = useContext(AuthContext);
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     const done = async () => {
-      const { account } = await connectEthereum();
+      const { account, card3 } = await connectEthereum();
       console.log(account);
+      console.log(card3);
+
+      const balance = Number(await card3.balanceOf(account));
+      console.log(`total balance: ${balance}`);
+
+      for (let i = 0; i < balance; i++) {
+        const tokenRealId = Number(await card3.tokenOfOwnerByIndex(account, i));
+        // const token = await card3.tokenByIndex(tokenRealId);
+        const tokenURI = await card3.tokenURI(tokenRealId);
+        // console.log(tokenURI);
+        // setCards((cards) => ({ ...cards, tokenURI }));
+        setCards((cards) => [...cards, tokenURI]);
+      }
+
+      //
     };
     done();
   }, []);
@@ -51,7 +68,7 @@ export default function Home() {
 
       <Header></Header>
       <Left></Left>
-      <Main></Main>
+      <Main cards={cards}></Main>
     </Container>
   );
 }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/react": "^17.0.39",
+    "axios": "^0.26.0",
     "canvas-confetti": "^1.5.1",
     "ethers": "^5.5.4",
     "next": "12.1.0",
