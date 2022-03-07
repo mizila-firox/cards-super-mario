@@ -23,7 +23,7 @@ export const Container = styled.div`
 const Main = ({ cards }) => {
   useEffect(() => {
     const done = async () => {
-      // const {data} = await axios.get(``)
+      const { data } = await axios.get(``);
     };
     done();
     //
