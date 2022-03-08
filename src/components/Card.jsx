@@ -8,13 +8,14 @@ export const Container = styled.div``;
 export const CardHolder = styled.div`
   /* overflow: hidden; */
   width: 180px;
-  height: 280px;
+  height: 250px;
   background-color: rgba(0, 0, 0, 0.236);
   padding: 0;
   /* max-height: min-content; */
   border-radius: 10px;
 
   margin: 10px;
+  border-radius: 10px;
 
   /* position: relative; */
 `;
@@ -43,6 +44,7 @@ export const Img = styled.img`
   height: ${(props) => props.height};
   transform: scale(1);
   transition-duration: 5s;
+  border-radius: 10px;
 
   :hover {
     transform: scale(1.1) rotate(1.2deg);
@@ -66,7 +68,7 @@ export const ImgBadge = styled.img`
   }
 `;
 
-const Card = ({ card, NFT }) => {
+const Card = ({ nft }) => {
   const ref = useRef();
 
   // const {
@@ -172,7 +174,7 @@ const Card = ({ card, NFT }) => {
           ref.current.style.display = "none";
         }}
       >
-        {/* <Img src={NFT.image} width={"180px"} height={"280px"}></Img> */}
+        <Img src={nft.image} width={"180px"} height={"250px"}></Img>
         {/* <Img
           src={getMetadata() ? getMetadata() : ""}
           width={"180px"}

@@ -3,8 +3,12 @@ import { createContext, useState } from "react";
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [data, setData] = useState("data..");
+  const [cards, setCards] = useState([]);
+  const [nfts, setNfts] = useState([]);
+
   return (
-    <AuthContext.Provider value={{ data }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ cards, setCards, nfts, setNfts }}>
+      {children}
+    </AuthContext.Provider>
   );
 };

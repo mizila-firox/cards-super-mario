@@ -10,6 +10,7 @@ import Main from "../components/Main";
 
 import { connectEthereum } from "../ethereum";
 import { id } from "ethers/lib/utils";
+import axios from "axios";
 
 // export const Container = styled.div`
 //   display: grid;
@@ -31,8 +32,8 @@ export const Container = styled.div`
 `;
 
 export default function Home() {
-  const { data } = useContext(AuthContext);
-  const [cards, setCards] = useState([]);
+  const { cards, setCards, nfts, setNfts } = useContext(AuthContext);
+  // const [cards, setCards] = useState([]);
 
   useEffect(() => {
     const done = async () => {
@@ -47,7 +48,11 @@ export default function Home() {
         const tokenRealId = Number(await card3.tokenOfOwnerByIndex(account, i));
         // const token = await card3.tokenByIndex(tokenRealId);
         const tokenURI = await card3.tokenURI(tokenRealId);
-        // console.log(tokenURI);
+
+        const { data } = await axios.get(`${tokenURI}`);
+        console.log(data);
+
+        setNfts((nfts) => [...nfts, data]);
         // setCards((cards) => ({ ...cards, tokenURI }));
         setCards((cards) => [...cards, tokenURI]);
       }
@@ -68,7 +73,7 @@ export default function Home() {
 
       <Header></Header>
       <Left></Left>
-      <Main cards={cards}></Main>
+      <Main></Main>
     </Container>
   );
 }

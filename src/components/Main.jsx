@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import axios from "axios";
+import { AuthContext } from "../context/contexto";
 
 export const Container = styled.div`
   grid-area: main;
@@ -14,29 +15,15 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  /* align-content: initial; */
-
-  /* margin: 0;
-  padding: 0; */
 `;
 
-const Main = ({ cards }) => {
-  useEffect(() => {
-    const done = async () => {
-      const { data } = await axios.get(``);
-    };
-    done();
-    //
-  }, []);
+const Main = () => {
+  const { cards, nfts } = useContext(AuthContext);
 
   return (
     <Container>
-      {cards.map((item, key) => {
-        return (
-          <Card key={key} card={""} NFT={""}>
-            q
-          </Card>
-        );
+      {nfts.map((item, key) => {
+        return <Card key={key} nft={item}></Card>;
       })}
     </Container>
   );
