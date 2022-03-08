@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Left from "../components/Left";
 import Main from "../components/Main";
+import MyCards from "./MyCards";
 
 import { connectEthereum } from "../ethereum";
 import { id } from "ethers/lib/utils";
@@ -43,6 +44,8 @@ export default function Home() {
 
       const balance = Number(await card3.balanceOf(account));
       console.log(`total balance: ${balance}`);
+      setCards([]);
+      setNfts([]);
 
       for (let i = 0; i < balance; i++) {
         const tokenRealId = Number(await card3.tokenOfOwnerByIndex(account, i));
