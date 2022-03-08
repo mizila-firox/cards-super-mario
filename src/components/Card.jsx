@@ -20,7 +20,6 @@ export const CardHolder = styled.div`
   /* position: relative; */
 `;
 
-// MAKE A COMPONENT WITH ALL THE CLUBS AND THEIR PAGES
 export const LittleWindow = styled.div`
   width: auto;
   height: auto;
@@ -34,11 +33,16 @@ export const LittleWindow = styled.div`
   pointer-events: none;
   padding: 10px;
   display: none;
-  flex-direction: column;
+
+  /* flex-direction: column; */
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   max-width: 300px;
+
+  div {
+    justify-self: center;
+  }
 `;
 
 export const Img = styled.img`
@@ -72,17 +76,6 @@ export const ImgBadge = styled.img`
 
 const Card = ({ nft }) => {
   const ref = useRef();
-
-  // const {
-  //   // nft,
-  //   // setNft,
-  //   // marketCards,
-  //   // setMarketCards,
-  //   // myInfos,
-  //   // setMyInfos,
-  //   // myCards,
-  //   // setMyCards,
-  // } = useContext(AuthContext);
 
   function confetis() {
     let duration = 1 * 300;
@@ -200,6 +193,54 @@ const Card = ({ nft }) => {
           <h3>{nft.name}</h3>
         </div>
         <div>{nft.description}</div>
+        <div>
+          <br />
+          {nft.attributes[0].trait_type}: {nft.attributes[0].value}/
+          {nft.attributes[0].max_value}
+        </div>
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "rgba(0,0,0,0.1)",
+            height: "2px",
+            margin: "10px 0",
+          }}
+        ></div>
+        <div>
+          <br />
+          {nft.attributes[1].trait_type}: {nft.attributes[1].value}/
+          {nft.attributes[1].max_value}
+        </div>
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "rgba(0,0,0,0.1)",
+            height: "2px",
+            margin: "10px 0",
+          }}
+        ></div>
+        <div>
+          <br />
+          {nft.attributes[2].trait_type}: {nft.attributes[2].value}/
+          {nft.attributes[2].max_value}
+        </div>
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "rgba(0,0,0,0.1)",
+            height: "2px",
+            margin: "10px 0",
+          }}
+        ></div>
+        <div>
+          <br />
+          {nft.attributes[3].trait_type}: {nft.attributes[3].value}/
+          {nft.attributes[3].max_value}
+        </div>
+
+        {/* <div>{nft.attributes.trait_type}</div> */}
+        {/* {console.log(nft.attributes[0].trait_type)} */}
+        {/* {console.log(nft.attributes)} */}
         {/* <div>{card.title ? card.title : <div></div>}</div>
         <div>{card.owner}</div>
         <div>{card.description}</div>

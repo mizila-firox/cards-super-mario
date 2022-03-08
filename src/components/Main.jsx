@@ -18,11 +18,11 @@ export const Container = styled.div`
 `;
 
 const Main = () => {
-  const { cards, nfts } = useContext(AuthContext);
+  const { contractCards, setContractCards } = useContext(AuthContext);
 
   return (
     <Container>
-      {nfts.map((item, key) => {
+      {contractCards.map((item, key) => {
         return <Card key={key} nft={item}></Card>;
       })}
     </Container>

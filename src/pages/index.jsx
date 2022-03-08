@@ -34,36 +34,35 @@ export const Container = styled.div`
 
 export default function Home() {
   const { cards, setCards, nfts, setNfts } = useContext(AuthContext);
-  // const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    const done = async () => {
-      const { account, card3 } = await connectEthereum();
-      console.log(account);
-      console.log(card3);
+  // useEffect(() => {
+  //   const done = async () => {
+  //     const { account, card3 } = await connectEthereum();
+  //     console.log(account);
+  //     console.log(card3);
 
-      const balance = Number(await card3.balanceOf(account));
-      console.log(`total balance: ${balance}`);
-      setCards([]);
-      setNfts([]);
+  //     const balance = Number(await card3.balanceOf(account));
+  //     console.log(`total balance: ${balance}`);
+  //     setCards([]);
+  //     setNfts([]);
 
-      for (let i = 0; i < balance; i++) {
-        const tokenRealId = Number(await card3.tokenOfOwnerByIndex(account, i));
-        // const token = await card3.tokenByIndex(tokenRealId);
-        const tokenURI = await card3.tokenURI(tokenRealId);
+  //     for (let i = 0; i < balance; i++) {
+  //       const tokenRealId = Number(await card3.tokenOfOwnerByIndex(account, i));
+  //       // const token = await card3.tokenByIndex(tokenRealId);
+  //       const tokenURI = await card3.tokenURI(tokenRealId);
 
-        const { data } = await axios.get(`${tokenURI}`);
-        console.log(data);
+  //       const { data } = await axios.get(`${tokenURI}`);
+  //       console.log(data);
 
-        setNfts((nfts) => [...nfts, data]);
-        // setCards((cards) => ({ ...cards, tokenURI }));
-        setCards((cards) => [...cards, tokenURI]);
-      }
+  //       setNfts((nfts) => [...nfts, data]);
+  //       // setCards((cards) => ({ ...cards, tokenURI }));
+  //       setCards((cards) => [...cards, tokenURI]);
+  //     }
 
-      //
-    };
-    done();
-  }, []);
+  //     //
+  //   };
+  //   done();
+  // }, []);
 
   return (
     <Container>
