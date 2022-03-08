@@ -37,6 +37,8 @@ export const LittleWindow = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  max-width: 300px;
 `;
 
 export const Img = styled.img`
@@ -188,8 +190,16 @@ const Card = ({ nft }) => {
           <ImgBadge src="barcelona.png" />
         )} */}
       </CardHolder>
-      <LittleWindow style={{ color: "black" }} ref={ref}>
-        <div>hello</div>
+      <LittleWindow
+        style={{
+          color: "black",
+        }}
+        ref={ref}
+      >
+        <div>
+          <h3>{nft.name}</h3>
+        </div>
+        <div>{nft.description}</div>
         {/* <div>{card.title ? card.title : <div></div>}</div>
         <div>{card.owner}</div>
         <div>{card.description}</div>
