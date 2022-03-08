@@ -7,12 +7,32 @@ async function main() {
   await card2.deployed();
   console.log("Card2 deployed to:", card2.address);
 
-  for (let i = 1; i <= 8; i++) {
-    const minted = await card2.mint(
-      `https://ipfs.io/ipfs/Qmb6tWBDLd9j2oSnvSNhE314WFL7SRpQNtfwjFWsStXp5A/${i}.json`
-    );
-    console.log(minted);
-  }
+  let minted = await card2.mint(
+    `https://ipfs.io/ipfs/Qmb6tWBDLd9j2oSnvSNhE314WFL7SRpQNtfwjFWsStXp5A/2.json`
+  );
+  console.log(minted);
+
+  minted = await card2.mint(
+    `https://ipfs.io/ipfs/Qmb6tWBDLd9j2oSnvSNhE314WFL7SRpQNtfwjFWsStXp5A/4.json`
+  );
+  console.log(minted);
+
+  minted = await card2.mint(
+    `https://ipfs.io/ipfs/Qmb6tWBDLd9j2oSnvSNhE314WFL7SRpQNtfwjFWsStXp5A/6.json`
+  );
+  console.log(minted);
+
+  minted = await card2.mint(
+    `https://ipfs.io/ipfs/Qmb6tWBDLd9j2oSnvSNhE314WFL7SRpQNtfwjFWsStXp5A/8.json`
+  );
+  console.log(minted);
+
+  // for (let i = 1; i <= 8; i++) {
+  //   const minted = await card2.mint(
+  //     `https://ipfs.io/ipfs/Qmb6tWBDLd9j2oSnvSNhE314WFL7SRpQNtfwjFWsStXp5A/${i}.json`
+  //   );
+  //   console.log(minted);
+  // }
 
   // const minted = await superMarioWorld.mint(
   //   "https://ipfs.io/ipfs/Qmch3m7DEFYRaZiFG6gc8qgkBMS3nrTvM5h5v9xZK6rGEz"
