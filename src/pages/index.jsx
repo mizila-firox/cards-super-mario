@@ -10,7 +10,7 @@ import Main from "../components/Main";
 import MyCards from "./MyCards";
 
 import { connectEthereum } from "../ethereum";
-import { id } from "ethers/lib/utils";
+
 import axios from "axios";
 
 // export const Container = styled.div`
@@ -23,13 +23,13 @@ import axios from "axios";
 // `;
 
 export const Container = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: 300px calc(100vw - 300px);
   grid-template-rows: 70px calc(100vh - 70px);
   grid-template-areas:
     "header header"
     "left main";
-  overflow-x: hidden;
+  overflow-x: hidden; */
 `;
 
 export default function Home() {
@@ -74,8 +74,6 @@ export default function Home() {
         <title>Cards</title>
       </Head>
 
-      <Header></Header>
-      <Left></Left>
       <Main></Main>
     </Container>
   );
