@@ -49,6 +49,7 @@ const MyCards = () => {
     };
     done();
   }, []);
+
   return (
     <Container>
       {nfts.map((item, key) => {
