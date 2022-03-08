@@ -7,7 +7,6 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Left from "../components/Left";
 import Main from "../components/Main";
-import MyCards from "./MyCards";
 
 import { connectEthereum } from "../ethereum";
 

@@ -176,7 +176,6 @@ const Card = ({ nft }) => {
           height={"280px"}
         ></Img> */}
         {/* {console.log(getMetadata())} */}
-        {/* //HARDCODED, CHANGE IT LATER */}
         {/* {card.club.toLowerCase() === "spfc" ? (
           <ImgBadge src="spfc.png" />
         ) : (

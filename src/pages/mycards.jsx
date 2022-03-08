@@ -18,7 +18,7 @@ export const Container = styled.div`
   align-content: flex-start;
 `;
 
-const MyCards = () => {
+export default function MyCards() {
   const { cards, setCards, nfts, setNfts } = useContext(AuthContext);
 
   useEffect(() => {
@@ -57,6 +57,4 @@ const MyCards = () => {
       })}
     </Container>
   );
-};
-
-export default MyCards;
+}
