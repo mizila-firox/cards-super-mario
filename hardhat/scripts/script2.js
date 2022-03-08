@@ -1,6 +1,6 @@
 const hh = require("hardhat");
 require("dotenv").config();
-const Card3 = require("../artifacts/contracts/Card3.sol/Card3.json");
+const Card2 = require("../artifacts/contracts/Card2.sol/Card2.json");
 
 async function main() {
   // const Card2 = await hh.ethers.getContractFactory("Card2");
@@ -16,7 +16,7 @@ async function main() {
 
   const contract = new hh.ethers.Contract(
     "0xFF8E19BE33A5B8A68bdf20a36005bF9643B5563a",
-    Card3.abi,
+    Card2.abi,
     signer
   );
 
