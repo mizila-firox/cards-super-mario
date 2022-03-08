@@ -27,16 +27,33 @@ const Main = () => {
       console.log(account);
       console.log(card3);
 
-      const balance = Number(await card3.balanceOf(card3.address));
+      // const ownerOf = await card3.tokenURI(0);
+      const ownerOf = await card3.ownerOf(1);
+
+      // console.log(ownerOf);
+      // console.log(card3);
+
+      const balance = Number(
+        await card3.balanceOf("0xFF8E19BE33A5B8A68bdf20a36005bF9643B5563a")
+      );
+      console.log(`contract balance: ${balance}`);
       setContractCards([]);
 
       for (let i = 0; i < balance; i++) {
-        const tokenRealId = Number(await card3.tokenOfOwnerByIndex(account, i));
+        const tokenRealId = Number(
+          await card3.tokenOfOwnerByIndex(
+            "0xFF8E19BE33A5B8A68bdf20a36005bF9643B5563a",
+            i
+          )
+        );
+        // const token = await card3.tokenByIndex(tokenRealId);
         const tokenURI = await card3.tokenURI(tokenRealId);
 
         const { data } = await axios.get(`${tokenURI}`);
+        // console.log(data);
 
-        setContractCards((contractCards) => [...contractCards, tokenURI]);
+        setContractCards((contractCards) => [...contractCards, data]);
+        // setContractCards([]);
       }
 
       //
@@ -46,6 +63,7 @@ const Main = () => {
 
   return (
     <Container>
+      {console.log(contractCards)}
       {contractCards.map((item, key) => {
         return <Card key={key} nft={item}></Card>;
       })}
