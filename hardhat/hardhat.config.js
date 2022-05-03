@@ -23,10 +23,11 @@ module.exports = {
     mumbai: {
       url: process.env.mumbai,
       accounts: [process.env.account],
-      gasPrice: 40000000000,
+      gasPrice: 50000000000,
     },
   },
   paths: {
     artifacts: "./artifacts",
+    artifacts: "../src/artifacts",
   },
 };

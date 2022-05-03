@@ -20,13 +20,17 @@ async function main() {
     signer
   );
 
-  const tx = await contract.transferFrom(
-    "0xfE770DEE89Ce3b79ec9Be61468755DD7b542f5f5",
-    contract.address,
-    1,
-    { gasPrice: "90000000000" }
-  );
-  console.log(tx);
+  const arr = [3, , 6];
+
+  for (let i = 0; i < 5; i++) {
+    const tx = await contract.transferFrom(
+      "0xfE770DEE89Ce3b79ec9Be61468755DD7b542f5f5",
+      contract.address,
+      arr[i],
+      { gasPrice: "92000000000" }
+    );
+    console.log(tx);
+  }
 
   // console.log(await contract.name());
   // console.log(`total supply: ${Number(await contract.totalSupply())}`);
